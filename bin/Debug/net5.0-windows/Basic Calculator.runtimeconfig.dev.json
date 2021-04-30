@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\cedri\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\cedri\\.nuget\\packages"
+    ]
+  }
+}
