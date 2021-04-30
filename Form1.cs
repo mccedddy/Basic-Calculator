@@ -21,5 +21,15 @@ namespace Basic_Calculator
         {
             textBox1.Text = textBox1.Text + "1";
         }
+
+        private void btn_2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "2";
+        }
+
+        private void btn_3_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "3";
+        }
     }
 }

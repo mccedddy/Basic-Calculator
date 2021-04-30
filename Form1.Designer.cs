@@ -122,6 +122,7 @@ namespace Basic_Calculator
             this.btn_2.TabIndex = 7;
             this.btn_2.Text = "2";
             this.btn_2.UseVisualStyleBackColor = true;
+            this.btn_2.Click += new System.EventHandler(this.btn_2_Click);
             // 
             // btn_3
             // 
@@ -131,6 +132,7 @@ namespace Basic_Calculator
             this.btn_3.TabIndex = 8;
             this.btn_3.Text = "3";
             this.btn_3.UseVisualStyleBackColor = true;
+            this.btn_3.Click += new System.EventHandler(this.btn_3_Click);
             // 
             // btn_divide
             // 
