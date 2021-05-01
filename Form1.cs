@@ -31,5 +31,45 @@ namespace Basic_Calculator
         {
             textBox1.Text = textBox1.Text + "3";
         }
+
+        private void btn_4_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "4";
+        }
+
+        private void btn_5_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "5";
+        }
+
+        private void btn_6_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "6";
+        }
+
+        private void btn_7_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "7";
+        }
+
+        private void btn_8_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "8";
+        }
+
+        private void btn_9_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "9";
+        }
+
+        private void btn_0_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "0";
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + ".";
+        }
     }
 }
