@@ -12,6 +12,10 @@ namespace Basic_Calculator
 {
     public partial class Basic_Calculator : Form
     {
+        string MDAS = "";
+        string num1 = "";
+        string num2 = "";
+        double result = 0;
         public Basic_Calculator()
         {
             InitializeComponent();
@@ -19,7 +23,19 @@ namespace Basic_Calculator
         private void btn_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            textBox1.Text = textBox1.Text + button.Text;
+            textBox.Text = textBox.Text + button.Text;
+        }
+        private void btn_MDAS(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+            num1 = num1 + textBox.Text;
+            MDAS = MDAS + button.Text;
+            textBox.Text = "";
+        }
+        private void btn_Equals(object sender, EventArgs e)
+        {
+            num2 = num2 + textBox.Text;
+            //MessageBox.Show(num1 + " " + MDAS + " " + num2 + " " + "=" + result);
         }
     }
 }

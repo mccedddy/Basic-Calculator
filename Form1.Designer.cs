@@ -47,7 +47,7 @@ namespace Basic_Calculator
             this.button16 = new System.Windows.Forms.Button();
             this.btn_equals = new System.Windows.Forms.Button();
             this.btn_0 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btn_7
@@ -168,6 +168,7 @@ namespace Basic_Calculator
             this.btn_divide.TabIndex = 9;
             this.btn_divide.Text = "/";
             this.btn_divide.UseVisualStyleBackColor = false;
+            this.btn_divide.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_MDAS);
             // 
             // btn_multiply
             // 
@@ -179,6 +180,7 @@ namespace Basic_Calculator
             this.btn_multiply.TabIndex = 10;
             this.btn_multiply.Text = "x";
             this.btn_multiply.UseVisualStyleBackColor = false;
+            this.btn_multiply.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_MDAS);
             // 
             // btn_subtract
             // 
@@ -190,6 +192,7 @@ namespace Basic_Calculator
             this.btn_subtract.TabIndex = 11;
             this.btn_subtract.Text = "-";
             this.btn_subtract.UseVisualStyleBackColor = false;
+            this.btn_subtract.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_MDAS);
             // 
             // btn_CE
             // 
@@ -223,6 +226,7 @@ namespace Basic_Calculator
             this.btn_add.TabIndex = 14;
             this.btn_add.Text = "+";
             this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_MDAS);
             // 
             // button16
             // 
@@ -246,6 +250,7 @@ namespace Basic_Calculator
             this.btn_equals.TabIndex = 16;
             this.btn_equals.Text = "=";
             this.btn_equals.UseVisualStyleBackColor = false;
+            this.btn_equals.Click += new System.EventHandler(this.btn_Equals);
             // 
             // btn_0
             // 
@@ -259,15 +264,15 @@ namespace Basic_Calculator
             this.btn_0.UseVisualStyleBackColor = false;
             this.btn_0.Click += new System.EventHandler(this.btn_Click);
             // 
-            // textBox1
+            // textBox
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(11, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(500, 58);
-            this.textBox1.TabIndex = 18;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.textBox.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox.Location = new System.Drawing.Point(11, 12);
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(500, 58);
+            this.textBox.TabIndex = 18;
+            this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Basic_Calculator
             // 
@@ -275,7 +280,7 @@ namespace Basic_Calculator
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(524, 407);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox);
             this.Controls.Add(this.btn_0);
             this.Controls.Add(this.btn_equals);
             this.Controls.Add(this.button16);
@@ -321,7 +326,7 @@ namespace Basic_Calculator
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button btn_equals;
         private System.Windows.Forms.Button btn_0;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox;
     }
 }
 
