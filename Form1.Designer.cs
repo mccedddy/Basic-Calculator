@@ -204,6 +204,7 @@ namespace Basic_Calculator
             this.btn_CE.TabIndex = 12;
             this.btn_CE.Text = "CE";
             this.btn_CE.UseVisualStyleBackColor = false;
+            this.btn_CE.Click += new System.EventHandler(this.btn_CE_Click);
             // 
             // btn_C
             // 
@@ -215,6 +216,7 @@ namespace Basic_Calculator
             this.btn_C.TabIndex = 13;
             this.btn_C.Text = "C";
             this.btn_C.UseVisualStyleBackColor = false;
+            this.btn_C.Click += new System.EventHandler(this.btn_C_Click);
             // 
             // btn_add
             // 

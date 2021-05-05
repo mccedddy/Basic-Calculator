@@ -15,6 +15,8 @@ namespace Basic_Calculator
         string MDAS = "";
         string num1 = "";
         string num2 = "";
+        double dnum1 = 0;
+        double dnum2 = 0;
         double result = 0;
         public Basic_Calculator()
         {
@@ -28,14 +30,42 @@ namespace Basic_Calculator
         private void btn_MDAS(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
-            num1 = num1 + textBox.Text;
+            if (result == 0) { num1 = num1 + textBox.Text; }
             MDAS = MDAS + button.Text;
             textBox.Text = "";
         }
         private void btn_Equals(object sender, EventArgs e)
         {
             num2 = num2 + textBox.Text;
-            //MessageBox.Show(num1 + " " + MDAS + " " + num2 + " " + "=" + result);
+            dnum1 = double.Parse(num1);
+            dnum2 = double.Parse(num2);
+            if (MDAS == "+") { result = dnum1 + dnum2; }
+            if (MDAS == "-") { result = dnum1 - dnum2; }
+            if (MDAS == "x") { result = dnum1 * dnum2; }
+            if (MDAS == "/") { result = dnum1 / dnum2; }
+            textBox.Text = Convert.ToString(result);
+            num1 = Convert.ToString(result);
+            dnum1 = result;
+            num2 = "";
+            MDAS = "";
+        }
+        private void btn_C_Click(object sender, EventArgs e)
+        {
+            MDAS = "";
+            num1 = "";
+            num2 = "";
+            dnum1 = 0;
+            dnum2 = 0;
+            result = 0;
+        }
+        private void btn_CE_Click(object sender, EventArgs e)
+        {
+            MDAS = "";
+            num1 = "";
+            num2 = "";
+            dnum1 = 0;
+            dnum2 = 0;
+            result = 0;
         }
     }
 }
