@@ -60,12 +60,7 @@ namespace Basic_Calculator
         }
         private void btn_CE_Click(object sender, EventArgs e)
         {
-            MDAS = "";
-            num1 = "";
-            num2 = "";
-            dnum1 = 0;
-            dnum2 = 0;
-            result = 0;
+            textBox.Text = "";
         }
     }
 }
