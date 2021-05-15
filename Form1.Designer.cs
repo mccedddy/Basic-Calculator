@@ -47,7 +47,7 @@ namespace Basic_Calculator
             this.button16 = new System.Windows.Forms.Button();
             this.btn_equals = new System.Windows.Forms.Button();
             this.btn_0 = new System.Windows.Forms.Button();
-            this.textBox = new System.Windows.Forms.TextBox();
+            this.display = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btn_7
@@ -266,15 +266,15 @@ namespace Basic_Calculator
             this.btn_0.UseVisualStyleBackColor = false;
             this.btn_0.Click += new System.EventHandler(this.btn_Click);
             // 
-            // textBox
+            // display
             // 
-            this.textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox.Location = new System.Drawing.Point(11, 12);
-            this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(500, 58);
-            this.textBox.TabIndex = 18;
-            this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.display.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.display.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.display.Location = new System.Drawing.Point(11, 12);
+            this.display.Name = "display";
+            this.display.Size = new System.Drawing.Size(500, 58);
+            this.display.TabIndex = 18;
+            this.display.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Basic_Calculator
             // 
@@ -282,7 +282,7 @@ namespace Basic_Calculator
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(524, 407);
-            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.display);
             this.Controls.Add(this.btn_0);
             this.Controls.Add(this.btn_equals);
             this.Controls.Add(this.button16);
@@ -328,7 +328,7 @@ namespace Basic_Calculator
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button btn_equals;
         private System.Windows.Forms.Button btn_0;
-        private System.Windows.Forms.TextBox textBox;
+        private System.Windows.Forms.TextBox display;
     }
 }
 
