@@ -15,8 +15,6 @@ namespace Basic_Calculator
         string MDAS;
         string num1;
         string num2;
-        double dnum1;
-        double dnum2;
         double result;
         public Basic_Calculator()
         {
@@ -37,26 +35,23 @@ namespace Basic_Calculator
         private void btn_Equals(object sender, EventArgs e)
         {
             num2 = num2 + textBox.Text;
-            dnum1 = double.Parse(num1);
-            dnum2 = double.Parse(num2);
             switch (MDAS)
             {
                 case "+":
-                    result = dnum1 + dnum2;
+                    result = double.Parse(num1) + double.Parse(num2);
                     break;
                 case "-":
-                    result = dnum1 - dnum2;
+                    result = double.Parse(num1) - double.Parse(num2);
                     break;
                 case "x":
-                    result = dnum1 * dnum2;
+                    result = double.Parse(num1) * double.Parse(num2);
                     break;
                 case "/":
-                    result = dnum1 / dnum2;
+                    result = double.Parse(num1) / double.Parse(num2);
                     break;
             }
             textBox.Text = Convert.ToString(result);
             num1 = Convert.ToString(result);
-            dnum1 = result;
             num2 = "";
             MDAS = "";
         }
@@ -65,8 +60,6 @@ namespace Basic_Calculator
             MDAS = "";
             num1 = "";
             num2 = "";
-            dnum1 = 0;
-            dnum2 = 0;
             result = 0;
             textBox.Text = "";
         }
