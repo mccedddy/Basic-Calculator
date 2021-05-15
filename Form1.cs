@@ -39,10 +39,21 @@ namespace Basic_Calculator
             num2 = num2 + textBox.Text;
             dnum1 = double.Parse(num1);
             dnum2 = double.Parse(num2);
-            if (MDAS == "+") { result = dnum1 + dnum2; }
-            if (MDAS == "-") { result = dnum1 - dnum2; }
-            if (MDAS == "x") { result = dnum1 * dnum2; }
-            if (MDAS == "/") { result = dnum1 / dnum2; }
+            switch (MDAS)
+            {
+                case "+":
+                    result = dnum1 + dnum2;
+                    break;
+                case "-":
+                    result = dnum1 - dnum2;
+                    break;
+                case "x":
+                    result = dnum1 * dnum2;
+                    break;
+                case "/":
+                    result = dnum1 / dnum2;
+                    break;
+            }
             textBox.Text = Convert.ToString(result);
             num1 = Convert.ToString(result);
             dnum1 = result;
