@@ -12,12 +12,12 @@ namespace Basic_Calculator
 {
     public partial class Basic_Calculator : Form
     {
-        string MDAS = "";
-        string num1 = "";
-        string num2 = "";
-        double dnum1 = 0;
-        double dnum2 = 0;
-        double result = 0;
+        string MDAS;
+        string num1;
+        string num2;
+        double dnum1;
+        double dnum2;
+        double result;
         public Basic_Calculator()
         {
             InitializeComponent();
