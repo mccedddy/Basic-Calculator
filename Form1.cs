@@ -22,14 +22,26 @@ namespace Basic_Calculator
         }
         private void btn_Click(object sender, EventArgs e)
         {
-            //if (MDAS != "") { display.Text = ""; }
             Button button = (Button)sender;
-            if (display.Text == "0") { display.Text = ""; }
-            display.Text = display.Text + button.Text;
-        }
-        private void btn_0_Click(object sender, EventArgs e)
-        {
-            if (display.Text != "0") { display.Text = display.Text + "0"; }
+            if (button.Text == ".")
+            {
+                if (!display.Text.Contains("."))
+                { display.Text = display.Text + "."; }
+                else
+                { display.Text = display.Text; }
+            }
+            else if (button.Text == "0")
+            {
+                if (display.Text != "0") 
+                { display.Text = display.Text + "0"; }
+                else
+                { display.Text = display.Text; }
+            }
+            else
+            { 
+                if (display.Text == "0") { display.Text = ""; }
+                display.Text = display.Text + button.Text;
+            }
         }
         private void btn_MDAS(object sender, MouseEventArgs e)
         {
@@ -68,10 +80,6 @@ namespace Basic_Calculator
             num1 = Convert.ToString(result);
             num2 = "";
             MDAS = "";
-        }
-        private void btn_point_Click(object sender, EventArgs e)
-        {
-            //display.Text = display.Text + ".";
         }
         private void btn_negative_Click(object sender, EventArgs e)
         {
