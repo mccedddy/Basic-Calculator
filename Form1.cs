@@ -12,7 +12,7 @@ namespace Basic_Calculator
 {
     public partial class Basic_Calculator : Form
     {
-        string MDAS;
+        string MDAS = "";
         string num1;
         string num2;
         double result;
@@ -22,6 +22,7 @@ namespace Basic_Calculator
         }
         private void btn_Click(object sender, EventArgs e)
         {
+            if (MDAS != "") { display.Text = ""; }
             Button button = (Button)sender;
             display.Text = display.Text + button.Text;
         }
@@ -30,7 +31,6 @@ namespace Basic_Calculator
             Button button = (Button)sender;
             if (result == 0) { num1 = num1 + display.Text; }
             MDAS = MDAS + button.Text;
-            display.Text = "";
         }
         private void btn_Equals(object sender, EventArgs e)
         {
@@ -54,6 +54,18 @@ namespace Basic_Calculator
             num1 = Convert.ToString(result);
             num2 = "";
             MDAS = "";
+        }
+        private void btn_point_Click(object sender, EventArgs e)
+        {
+            //display.Text = display.Text + ".";
+        }
+        private void btn_negative_Click(object sender, EventArgs e)
+        {
+            double negative = double.Parse(display.Text);
+            if (negative - negative == 0) { negative = negative - negative * 2; }
+            else { negative = negative - negative * 2; }
+            num1 = Convert.ToString(negative);
+            display.Text = num1;
         }
         private void btn_C_Click(object sender, EventArgs e)
         {

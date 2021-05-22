@@ -44,10 +44,11 @@ namespace Basic_Calculator
             this.btn_CE = new System.Windows.Forms.Button();
             this.btn_C = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
+            this.btn_point = new System.Windows.Forms.Button();
             this.btn_equals = new System.Windows.Forms.Button();
             this.btn_0 = new System.Windows.Forms.Button();
             this.display = new System.Windows.Forms.TextBox();
+            this.btn_negative = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_7
@@ -230,17 +231,17 @@ namespace Basic_Calculator
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_MDAS);
             // 
-            // button16
+            // btn_point
             // 
-            this.button16.BackColor = System.Drawing.Color.Silver;
-            this.button16.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button16.Location = new System.Drawing.Point(214, 322);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(95, 75);
-            this.button16.TabIndex = 15;
-            this.button16.Text = ".";
-            this.button16.UseVisualStyleBackColor = false;
-            this.button16.Click += new System.EventHandler(this.btn_Click);
+            this.btn_point.BackColor = System.Drawing.Color.Silver;
+            this.btn_point.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_point.Location = new System.Drawing.Point(214, 322);
+            this.btn_point.Name = "btn_point";
+            this.btn_point.Size = new System.Drawing.Size(95, 75);
+            this.btn_point.TabIndex = 15;
+            this.btn_point.Text = ".";
+            this.btn_point.UseVisualStyleBackColor = false;
+            this.btn_point.Click += new System.EventHandler(this.btn_point_Click);
             // 
             // btn_equals
             // 
@@ -258,9 +259,9 @@ namespace Basic_Calculator
             // 
             this.btn_0.BackColor = System.Drawing.Color.Silver;
             this.btn_0.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_0.Location = new System.Drawing.Point(12, 322);
+            this.btn_0.Location = new System.Drawing.Point(113, 322);
             this.btn_0.Name = "btn_0";
-            this.btn_0.Size = new System.Drawing.Size(196, 75);
+            this.btn_0.Size = new System.Drawing.Size(95, 75);
             this.btn_0.TabIndex = 17;
             this.btn_0.Text = "0";
             this.btn_0.UseVisualStyleBackColor = false;
@@ -276,16 +277,29 @@ namespace Basic_Calculator
             this.display.TabIndex = 18;
             this.display.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // btn_negative
+            // 
+            this.btn_negative.BackColor = System.Drawing.Color.Silver;
+            this.btn_negative.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_negative.Location = new System.Drawing.Point(12, 322);
+            this.btn_negative.Name = "btn_negative";
+            this.btn_negative.Size = new System.Drawing.Size(95, 75);
+            this.btn_negative.TabIndex = 19;
+            this.btn_negative.Text = "(-)";
+            this.btn_negative.UseVisualStyleBackColor = false;
+            this.btn_negative.Click += new System.EventHandler(this.btn_negative_Click);
+            // 
             // Basic_Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(524, 407);
+            this.Controls.Add(this.btn_negative);
             this.Controls.Add(this.display);
             this.Controls.Add(this.btn_0);
             this.Controls.Add(this.btn_equals);
-            this.Controls.Add(this.button16);
+            this.Controls.Add(this.btn_point);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.btn_C);
             this.Controls.Add(this.btn_CE);
@@ -325,10 +339,11 @@ namespace Basic_Calculator
         private System.Windows.Forms.Button btn_CE;
         private System.Windows.Forms.Button btn_C;
         private System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button btn_point;
         private System.Windows.Forms.Button btn_equals;
         private System.Windows.Forms.Button btn_0;
         private System.Windows.Forms.TextBox display;
+        private System.Windows.Forms.Button btn_negative;
     }
 }
 
