@@ -29,8 +29,17 @@ namespace Basic_Calculator
         private void btn_MDAS(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
-            if (result == 0) { num1 = num1 + display.Text; }
-            MDAS = MDAS + button.Text;
+            if (MDAS == "")
+            {
+                if (result == 0) { num1 = num1 + display.Text; }
+                MDAS = MDAS + button.Text;
+            }
+            else 
+            {
+                if (result == 0) { num1 = num1 + display.Text; }
+                MDAS = "";
+                MDAS = MDAS + button.Text;
+            }
         }
         private void btn_Equals(object sender, EventArgs e)
         {
