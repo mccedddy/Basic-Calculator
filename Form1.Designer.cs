@@ -265,7 +265,7 @@ namespace Basic_Calculator
             this.btn_0.TabIndex = 17;
             this.btn_0.Text = "0";
             this.btn_0.UseVisualStyleBackColor = false;
-            this.btn_0.Click += new System.EventHandler(this.btn_Click);
+            this.btn_0.Click += new System.EventHandler(this.btn_0_Click);
             // 
             // display
             // 

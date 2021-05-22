@@ -27,6 +27,10 @@ namespace Basic_Calculator
             if (display.Text == "0") { display.Text = ""; }
             display.Text = display.Text + button.Text;
         }
+        private void btn_0_Click(object sender, EventArgs e)
+        {
+            if (display.Text != "0") { display.Text = display.Text + "0"; }
+        }
         private void btn_MDAS(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
