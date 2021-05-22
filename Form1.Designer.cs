@@ -275,6 +275,7 @@ namespace Basic_Calculator
             this.display.Name = "display";
             this.display.Size = new System.Drawing.Size(500, 58);
             this.display.TabIndex = 18;
+            this.display.Text = "0";
             this.display.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btn_negative

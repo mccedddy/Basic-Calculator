@@ -22,24 +22,25 @@ namespace Basic_Calculator
         }
         private void btn_Click(object sender, EventArgs e)
         {
-            if (MDAS != "") { display.Text = ""; }
+            //if (MDAS != "") { display.Text = ""; }
             Button button = (Button)sender;
+            if (display.Text == "0") { display.Text = ""; }
             display.Text = display.Text + button.Text;
         }
         private void btn_MDAS(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
+            if (result == 0) { num1 = num1 + display.Text; }
             if (MDAS == "")
             {
-                if (result == 0) { num1 = num1 + display.Text; }
                 MDAS = MDAS + button.Text;
             }
-            else 
+            else
             {
-                if (result == 0) { num1 = num1 + display.Text; }
                 MDAS = "";
                 MDAS = MDAS + button.Text;
             }
+            display.Text = "";
         }
         private void btn_Equals(object sender, EventArgs e)
         {
@@ -82,11 +83,11 @@ namespace Basic_Calculator
             num1 = "";
             num2 = "";
             result = 0;
-            display.Text = "";
+            display.Text = "0";
         }
         private void btn_CE_Click(object sender, EventArgs e)
         {
-            display.Text = "";
+            display.Text = "0";
         }
     }
 }
