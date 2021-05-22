@@ -39,14 +39,18 @@ namespace Basic_Calculator
             }
             else
             { 
-                if (display.Text == "0") { display.Text = ""; }
+                if (display.Text == "0") 
+                { display.Text = ""; }
                 display.Text = display.Text + button.Text;
             }
         }
         private void btn_MDAS(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
-            if (result == 0) { num1 = num1 + display.Text; }
+            if (result == 0) 
+            { 
+                num1 = num1 + display.Text; 
+            }
             if (MDAS == "")
             {
                 MDAS = MDAS + button.Text;
