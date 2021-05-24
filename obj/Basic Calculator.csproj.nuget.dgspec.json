@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cedri\\source\\repos\\Basic Calculator\\Basic Calculator.csproj": {}
+    "C:\\Users\\cedri\\source\\repos\\Basic-Calculator\\Basic Calculator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cedri\\source\\repos\\Basic Calculator\\Basic Calculator.csproj": {
+    "C:\\Users\\cedri\\source\\repos\\Basic-Calculator\\Basic Calculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cedri\\source\\repos\\Basic Calculator\\Basic Calculator.csproj",
+        "projectUniqueName": "C:\\Users\\cedri\\source\\repos\\Basic-Calculator\\Basic Calculator.csproj",
         "projectName": "Basic Calculator",
-        "projectPath": "C:\\Users\\cedri\\source\\repos\\Basic Calculator\\Basic Calculator.csproj",
+        "projectPath": "C:\\Users\\cedri\\source\\repos\\Basic-Calculator\\Basic Calculator.csproj",
         "packagesPath": "C:\\Users\\cedri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cedri\\source\\repos\\Basic Calculator\\obj\\",
+        "outputPath": "C:\\Users\\cedri\\source\\repos\\Basic-Calculator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cedri\\AppData\\Roaming\\NuGet\\NuGet.Config",

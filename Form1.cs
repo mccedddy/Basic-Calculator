@@ -107,12 +107,15 @@ namespace Basic_Calculator
         private void btn_negative_Click(object sender, EventArgs e)
         {
             // If display.text is positive, add negative sign
-            if (!display.Text.Contains("-")) 
+            if (!display.Text.Contains("-") && display.Text != "0") 
             { display.Text = display.Text.Insert(0, "-"); }
 
             // If display.text is negative, remove negative sign
             else
-            { display.Text = display.Text.Remove(0,1); }
+            { 
+                if (display.Text != "0") 
+                { display.Text = display.Text.Remove(0, 1); } 
+            }
         }
         private void btn_C_Click(object sender, EventArgs e)
         {

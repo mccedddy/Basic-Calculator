@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DWMsGBsI/QJZNqKVdliIKJT0whEj4nQWYPEhT9RptXjdDDUAtxyMhjO+mBaA6ii2PHQlSi4An1Emv5CFqIUIKg==",
+  "dgSpecHash": "6N7ifgsUE5yfL2Y9TGTJv6ezjwTQ84b4xy/JrdNO8jjL5hjvN1Sw7ibIuedji2t2+ZBsujWTa+N0gj6w74ypMQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\cedri\\source\\repos\\Basic Calculator\\Basic Calculator.csproj",
+  "projectFilePath": "C:\\Users\\cedri\\source\\repos\\Basic-Calculator\\Basic Calculator.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
