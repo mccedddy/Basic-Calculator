@@ -21,10 +21,18 @@ namespace Basic_Calculator
         string num1;
         string num2;
         double result;
+        string operationDone = "No";
         private void btn_Click(object sender, EventArgs e)
         {
             
             Button button = (Button)sender;
+            // If an operation is already performed, clear display.text
+            if (operationDone == "Yes") { display.Text = ""; }
+
+            // Reset operationDone
+            operationDone = "No";
+
+            // If the decimal button is pressed
             if (button.Text == ".")
             {
                 // If display.text does not have a decimal point, add a decimal point
@@ -35,6 +43,8 @@ namespace Basic_Calculator
                 else
                 { display.Text = display.Text; }
             }
+
+            // If the zero button is pressed
             else if (button.Text == "0")
             {
                 // If display.text is not 0, add 0
@@ -45,6 +55,8 @@ namespace Basic_Calculator
                 else
                 { display.Text = display.Text + "0"; }
             }
+
+            // If a number button is pressed
             else
             { 
                 // If display.text is 0, remove the text
@@ -103,6 +115,7 @@ namespace Basic_Calculator
             // Clear num2 and MDAS
             num2 = "";
             MDAS = "";
+            operationDone = "Yes";
         }
         private void btn_negative_Click(object sender, EventArgs e)
         {
