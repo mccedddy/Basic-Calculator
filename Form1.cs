@@ -21,47 +21,46 @@ namespace Basic_Calculator
         string num1;
         string num2;
         double result;
-        string operationDone = "No";
+        bool operationDone = false;
         private void btn_Click(object sender, EventArgs e)
         {
             
             Button button = (Button)sender;
-            // If an operation is already performed, clear display.text
-            if (operationDone == "Yes") { display.Text = ""; }
-
-            // Reset operationDone
-            operationDone = "No";
-
             // If the decimal button is pressed
             if (button.Text == ".")
             {
                 // If display.text does not have a decimal point, add a decimal point
                 if (!display.Text.Contains("."))
                 { display.Text = display.Text + "."; }
-
-                // If display.text has a decimal point, don't add a decimal point
-                else
-                { display.Text = display.Text; }
             }
 
             // If the zero button is pressed
             else if (button.Text == "0")
             {
-                // If display.text is not 0, add 0
+                // If display.text is 0, don't add 0
                 if (display.Text == "0") 
                 { display.Text = display.Text; }
 
-                // If display.text is 0, don't add 0
-                else
-                { display.Text = display.Text + "0"; }
+                // If display.text is 0 or an operation has already been performed
+                else if (display.Text != "0" | operationDone == true)
+                {
+                    // Clear display.Text, add 0, and reset operationDone
+                    display.Text = "";
+                    display.Text = display.Text + "0";
+                    operationDone = false;
+                }
             }
 
             // If a number button is pressed
             else
             { 
-                // If display.text is 0, remove the text
-                if (display.Text == "0") 
-                { display.Text = ""; }
+                // If display.text is 0 or an operation has already been performed
+                if (display.Text == "0" | operationDone == true)
+                { 
+                    // Clear display.text and reset operationDone
+                    display.Text = "";
+                    operationDone = false;
+                }
 
                 // Input button.text
                 display.Text = display.Text + button.Text;
@@ -105,17 +104,24 @@ namespace Basic_Calculator
                     result = double.Parse(num1) * double.Parse(num2);
                     break;
                 case "/":
-                    result = double.Parse(num1) / double.Parse(num2);
+                    if (num2 == "0") { display.Text = "Cannot divide by zero"; }
+                    else
+                    {
+                        result = double.Parse(num1) / double.Parse(num2);
+                    }
                     break;
             }
 
             // Display result
-            display.Text = Convert.ToString(result);
+            if (MDAS != "/" && num2 != "0")
+            {
+                display.Text = Convert.ToString(result);
+            }
 
             // Clear num2 and MDAS
             num2 = "";
             MDAS = "";
-            operationDone = "Yes";
+            operationDone = true;
         }
         private void btn_negative_Click(object sender, EventArgs e)
         {
