@@ -109,7 +109,7 @@ namespace Basic_Calculator
                     result = double.Parse(num1) * double.Parse(num2);
                     break;
                 case "/":
-                        result = double.Parse(num1) / double.Parse(num2);
+                    result = double.Parse(num1) / double.Parse(num2);
                     break;
             }
 
