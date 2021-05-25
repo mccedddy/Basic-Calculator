@@ -41,12 +41,17 @@ namespace Basic_Calculator
                 if (display.Text == "0") 
                 { display.Text = display.Text; }
 
-                // If display.text is 0 or an operation has already been performed
-                else if (display.Text != "0" | operationDone == true)
+                // If display.text is not 0
+                else if (display.Text != "0")
                 {
-                    // Clear display.Text, add 0, and reset operationDone
-                    display.Text = "";
+                    // Add 0
                     display.Text = display.Text + "0";
+                }
+
+                // If an operation has already been performed, set display.text as 0 and reset operationDone
+                if (operationDone == true)
+                {
+                    display.Text = "0";
                     operationDone = false;
                 }
             }
@@ -104,19 +109,13 @@ namespace Basic_Calculator
                     result = double.Parse(num1) * double.Parse(num2);
                     break;
                 case "/":
-                    if (num2 == "0") { display.Text = "Cannot divide by zero"; }
-                    else
-                    {
                         result = double.Parse(num1) / double.Parse(num2);
-                    }
                     break;
             }
 
-            // Display result
-            if (MDAS != "/" && num2 != "0")
-            {
-                display.Text = Convert.ToString(result);
-            }
+            // Show result
+            display.Text = Convert.ToString(result);
+            if (display.Text == "∞") { display.Text = "Cannot divide by zero"; }
 
             // Clear num2 and MDAS
             num2 = "";
