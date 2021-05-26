@@ -18,15 +18,20 @@ namespace Basic_Calculator
         }
         // Fields
         string MDAS = "";
-        string num1;
-        string num2;
+        string num1 = "";
+        string num2 = "";
         double result;
         bool operationDone = false;
         bool zeroError = false;
         private void btn_Click(object sender, EventArgs e)
         {
-            
             Button button = (Button)sender;
+
+            // If num1 and MDAS have value and num2 is empty
+            if (num1 != "" && MDAS != "" && num2 == "")
+            {
+                display.Text = "0";
+            }
             
             // If the decimal button is pressed
             if (button.Text == ".")
@@ -60,6 +65,18 @@ namespace Basic_Calculator
 
                 // Input button.text
                 display.Text = display.Text + button.Text;
+
+                // If num1 and MDAS have value and num2 is empty
+                if (num1 != "" && MDAS != "" && num2 == "")
+                {
+                    
+                    // Clear display.text and add button.text
+                    display.Text = "";
+                    display.Text = display.Text + button.Text;
+                    
+                    // Set display.text as num2
+                    num2 = display.Text;
+                }
             }
         }
         private void btn_MDAS(object sender, MouseEventArgs e)
@@ -68,6 +85,15 @@ namespace Basic_Calculator
             // If zeroError is false
             if (zeroError == false)
             {
+                if (num1 != "" && num2 != "" && MDAS != "")
+                {
+                    operation();
+                    display.Text = Convert.ToString(result);
+                    num1 = display.Text;
+                    num2 = "";
+                }
+
+
                 // If there's still no MDAS, set button.text as MDAS
                 if (MDAS == "")
                 { 
@@ -83,9 +109,6 @@ namespace Basic_Calculator
                     MDAS = "";
                     MDAS = MDAS + button.Text;
                 }
-
-                // Clear display.text
-                display.Text = "";
             }
         }
         private void btn_Equals(object sender, EventArgs e)
@@ -188,7 +211,7 @@ namespace Basic_Calculator
 
             // If display.text is 0, don't add 0
             if (display.Text == "0")
-            { display.Text = display.Text; }
+            { }
 
             // If display.text is not 0
             else if (display.Text != "0")
@@ -209,19 +232,15 @@ namespace Basic_Calculator
             switch (MDAS)
             {
                 case "+":
-                    debug();
                     result = double.Parse(num1) + double.Parse(num2);
                     break;
                 case "-":
-                    debug();
                     result = double.Parse(num1) - double.Parse(num2);
                     break;
                 case "x":
-                    debug();
                     result = double.Parse(num1) * double.Parse(num2);
                     break;
                 case "/":
-                    debug();
                     result = double.Parse(num1) / double.Parse(num2);
                     break;
             }
