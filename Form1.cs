@@ -37,6 +37,13 @@ namespace Basic_Calculator
                     // If display.text does not have a decimal point, add a decimal point
                     if (!display.Text.Contains("."))
                     { display.Text = display.Text + "."; }
+
+                    // If an operation has been performed, clear display.text and add a decimal point
+                    if (operationDone == true)
+                    {
+                        display.Text = "0.";
+                        operationDone = false;
+                    }
                 }
             }
 
