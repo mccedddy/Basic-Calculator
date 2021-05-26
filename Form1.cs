@@ -35,7 +35,8 @@ namespace Basic_Calculator
                 { display.Text = ""; }
 
                 // Add button.text
-                display.Text = display.Text + button.Text;
+                if (button.Text != "0")
+                { display.Text = display.Text + button.Text; }
 
                 // Set display.text as num2
                 num2 = display.Text;
@@ -52,6 +53,9 @@ namespace Basic_Calculator
             else if (button.Text == "0")
             {
                 zeroinput();
+
+                // Set display.text as num2
+                num2 = display.Text;
             }
 
             // If a number button is pressed
@@ -105,7 +109,7 @@ namespace Basic_Calculator
 
                 // If there's still no MDAS, set button.text as MDAS
                 if (MDAS == "")
-                { 
+                {
                     MDAS = MDAS + button.Text;
 
                     // Set display.text as num1
@@ -120,6 +124,12 @@ namespace Basic_Calculator
                     MDAS = MDAS + button.Text;
                     //debug();
                 }
+            }
+            if (display.Text == "∞" | display.Text == "-∞")
+            {
+                clearall();
+                zeroError = true;
+                display.Text = "Cannot divide by zero";
             }
         }
         private void btn_Equals(object sender, EventArgs e)
@@ -172,13 +182,7 @@ namespace Basic_Calculator
         private void btn_C_Click(object sender, EventArgs e)
         {
             // Clear all
-            MDAS = "";
-            num1 = "";
-            num2 = "";
-            result = 0;
-            display.Text = "0";
-            zeroError = false;
-            operationDone = false;
+            clearall();
             //debug();
         }
         private void btn_CE_Click(object sender, EventArgs e)
@@ -189,19 +193,13 @@ namespace Basic_Calculator
             // If zeroError is true, clear all
             if (zeroError == true)
             {
-                MDAS = "";
-                num1 = "";
-                num2 = "";
-                result = 0;
-                display.Text = "0";
-                zeroError = false;
-                operationDone = false;
+                clearall();
                 //debug();
             }
         }
 
         // Methods
-        
+
         private void decimalpoint()
         {
             // If zeroError is false
@@ -266,6 +264,16 @@ namespace Basic_Calculator
                     break;
             }
         }
+        private void clearall()
+        {
+            MDAS = "";
+            num1 = "";
+            num2 = "";
+            result = 0;
+            display.Text = "0";
+            zeroError = false;
+            operationDone = false;
+        }
         private void debug()
         {
             MessageBox.Show("num1 = " + num1 +
@@ -273,5 +281,6 @@ namespace Basic_Calculator
                 "\nnum2 = " + num2 +
                 "\noperationDone = " + operationDone);
         }
+        
     }
 }
