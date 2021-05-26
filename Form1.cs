@@ -31,49 +31,13 @@ namespace Basic_Calculator
             // If the decimal button is pressed
             if (button.Text == ".")
             {
-                // If zeroError is false
-                if (zeroError == false)
-                {
-                    // If display.text does not have a decimal point, add a decimal point
-                    if (!display.Text.Contains("."))
-                    { display.Text = display.Text + "."; }
-
-                    // If an operation has been performed, clear display.text and add a decimal point
-                    if (operationDone == true)
-                    {
-                        display.Text = "0.";
-                        operationDone = false;
-                    }
-                }
+                decimalpoint();
             }
 
             // If the zero button is pressed
             else if (button.Text == "0")
             {
-                // If zeroError is true
-                if (zeroError == true)
-                {
-                    zeroError = false;
-                    display.Text = "0";
-                }
-
-                // If display.text is 0, don't add 0
-                if (display.Text == "0") 
-                { display.Text = display.Text; }
-
-                // If display.text is not 0
-                else if (display.Text != "0")
-                {
-                    // Add 0
-                    display.Text = display.Text + "0";
-                }
-
-                // If an operation has already been performed, set display.text as 0 and reset operationDone
-                if (operationDone == true)
-                {
-                    display.Text = "0";
-                    operationDone = false;
-                }
+                zeroinput();
             }
 
             // If a number button is pressed
@@ -104,12 +68,14 @@ namespace Basic_Calculator
             // If zeroError is false
             if (zeroError == false)
             {
-                // Set display.text as num1
-                num1 = display.Text;
-
                 // If there's still no MDAS, set button.text as MDAS
                 if (MDAS == "")
-                { MDAS = MDAS + button.Text; }
+                { 
+                    MDAS = MDAS + button.Text;
+
+                    // Set display.text as num1
+                    num1 = display.Text;
+                }
 
                 // If there's already MDAS, clear MDAS and set button.text as MDAS
                 else if (MDAS != "")
@@ -132,21 +98,7 @@ namespace Basic_Calculator
                 zeroError = false;
 
                 // Perform operations according to MDAS
-                switch (MDAS)
-                {
-                    case "+":
-                        result = double.Parse(num1) + double.Parse(num2);
-                        break;
-                    case "-":
-                        result = double.Parse(num1) - double.Parse(num2);
-                        break;
-                    case "x":
-                        result = double.Parse(num1) * double.Parse(num2);
-                        break;
-                    case "/":
-                        result = double.Parse(num1) / double.Parse(num2);
-                        break;
-                }
+                operation();
 
                 // Show result
                 display.Text = Convert.ToString(result);
@@ -204,6 +156,82 @@ namespace Basic_Calculator
                 display.Text = "0";
                 zeroError = false;
             }
+        }
+
+        // Methods
+        
+        private void decimalpoint()
+        {
+            // If zeroError is false
+            if (zeroError == false)
+            {
+                // If display.text does not have a decimal point, add a decimal point
+                if (!display.Text.Contains("."))
+                { display.Text = display.Text + "."; }
+
+                // If an operation has been performed, clear display.text and add a decimal point
+                if (operationDone == true)
+                {
+                    display.Text = "0.";
+                    operationDone = false;
+                }
+            }
+        }
+        private void zeroinput()
+        {
+            // If zeroError is true
+            if (zeroError == true)
+            {
+                zeroError = false;
+                display.Text = "0";
+            }
+
+            // If display.text is 0, don't add 0
+            if (display.Text == "0")
+            { display.Text = display.Text; }
+
+            // If display.text is not 0
+            else if (display.Text != "0")
+            {
+                // Add 0
+                display.Text = display.Text + "0";
+            }
+
+            // If an operation has already been performed, set display.text as 0 and reset operationDone
+            if (operationDone == true)
+            {
+                display.Text = "0";
+                operationDone = false;
+            }
+        }
+        private void operation()
+        {
+            switch (MDAS)
+            {
+                case "+":
+                    debug();
+                    result = double.Parse(num1) + double.Parse(num2);
+                    break;
+                case "-":
+                    debug();
+                    result = double.Parse(num1) - double.Parse(num2);
+                    break;
+                case "x":
+                    debug();
+                    result = double.Parse(num1) * double.Parse(num2);
+                    break;
+                case "/":
+                    debug();
+                    result = double.Parse(num1) / double.Parse(num2);
+                    break;
+            }
+        }
+        private void debug()
+        {
+            MessageBox.Show("num1 = " + num1 +
+                "\nMDAS = " + MDAS +
+                "\nnum2 = " + num2 +
+                "\noperationDone = " + operationDone);
         }
     }
 }
