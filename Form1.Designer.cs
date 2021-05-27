@@ -317,6 +317,7 @@ namespace Basic_Calculator
             this.Controls.Add(this.btn_8);
             this.Controls.Add(this.btn_7);
             this.Name = "Basic_Calculator";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Basic Calculator";
             this.ResumeLayout(false);
             this.PerformLayout();
