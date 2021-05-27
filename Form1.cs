@@ -17,11 +17,6 @@ namespace Basic_Calculator
             InitializeComponent();
         }
 
-        /// NOTES
-        
-        /// Fix decimal input (1 + 2 + .3)
-        /// Continuous Equals
-
         // Fields
         string MDAS = "";
         string num1 = "";
@@ -36,13 +31,22 @@ namespace Basic_Calculator
             // If num1 and MDAS have value
             if (num1 != "" && MDAS != "")
             {
-                // If num2 is empty, clear display.text
+                // If num2 is empty
                 if (num2 == "")
-                { display.Text = ""; }
+                {   // If display.text is 0., do nothing
+                    if (display.Text == "0.") { }
+                    // If display.text is not 0., clear display.text
+                    else { display.Text = ""; }
+                }
 
-                // Add button.text
+                // If button.text is not 0
                 if (button.Text != "0")
-                { display.Text = display.Text + button.Text; }
+                {
+                    // If button.text is ".", do nothing
+                    if (button.Text == ".") { }
+                    // If button.text is not ".", add button.text
+                    else { display.Text = display.Text + button.Text; }
+                }
 
                 // Set display.text as num2
                 num2 = display.Text;
@@ -68,7 +72,7 @@ namespace Basic_Calculator
             // If a number button is pressed
             else
             {
-                // If zeroError is true
+                // If zeroError is true, reset zeroError and display.text
                 if (zeroError == true)
                 {
                     zeroError = false;
@@ -132,6 +136,8 @@ namespace Basic_Calculator
                     //debug();
                 }
             }
+
+            // If display.text is infinite or NaN, show error
             if (display.Text == "∞" | display.Text == "-∞")
             {
                 clearall();
@@ -158,10 +164,13 @@ namespace Basic_Calculator
 
                 // Show result
                 display.Text = Convert.ToString(result);
+
+                // If display.text is infinite or NaN, show error
                 if (display.Text == "∞" | display.Text == "-∞")
                 {
-                    display.Text = "Cannot divide by zero";
+                    clearall();
                     zeroError = true;
+                    display.Text = "Cannot divide by zero";
                 }
                 if (display.Text == "NaN")
                 {
@@ -226,9 +235,15 @@ namespace Basic_Calculator
             {
                 // If display.text does not have a decimal point, add a decimal point
                 if (!display.Text.Contains("."))
-                { display.Text = display.Text + "."; }
+                {   
+                    display.Text = display.Text + ".";
 
-                // If an operation has been performed, clear display.text and add a decimal point
+                    // If display.text is ".", set display.text as "0."
+                    if (display.Text == ".") 
+                    { display.Text = "0."; }
+                }
+
+                // If an operation has been performed, set display.text as "0." and reset operationDone
                 if (operationDone == true)
                 {
                     display.Text = "0.";
@@ -267,6 +282,7 @@ namespace Basic_Calculator
         }
         private void operation()
         {
+            // Solve according to MDAS
             switch (MDAS)
             {
                 case "+":
@@ -285,6 +301,7 @@ namespace Basic_Calculator
         }
         private void clearall()
         {
+            // Reset all variables
             MDAS = "";
             num1 = "";
             num2 = "";
