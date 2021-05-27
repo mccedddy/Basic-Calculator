@@ -16,6 +16,12 @@ namespace Basic_Calculator
         {
             InitializeComponent();
         }
+
+        /// NOTES
+        
+        /// Fix decimal input (1 + 2 + .3)
+        /// Continuous Equals
+
         // Fields
         string MDAS = "";
         string num1 = "";
@@ -54,8 +60,9 @@ namespace Basic_Calculator
             {
                 zeroinput();
 
-                // Set display.text as num2
-                num2 = display.Text;
+                // If there is an MDAS, set display.text as num2
+                if (MDAS != "")
+                { num2 = display.Text; }
             }
 
             // If a number button is pressed
@@ -131,6 +138,12 @@ namespace Basic_Calculator
                 zeroError = true;
                 display.Text = "Cannot divide by zero";
             }
+            if (display.Text == "NaN")
+            {
+                clearall();
+                zeroError = true;
+                display.Text = "Result is undefined";
+            }
         }
         private void btn_Equals(object sender, EventArgs e)
         {
@@ -149,6 +162,12 @@ namespace Basic_Calculator
                 {
                     display.Text = "Cannot divide by zero";
                     zeroError = true;
+                }
+                if (display.Text == "NaN")
+                {
+                    clearall();
+                    zeroError = true;
+                    display.Text = "Result is undefined";
                 }
                 //debug();
 
@@ -274,11 +293,12 @@ namespace Basic_Calculator
             zeroError = false;
             operationDone = false;
         }
-        private void debug()
+        private void debug() // Use to show the current value of each variable
         {
             MessageBox.Show("num1 = " + num1 +
                 "\nMDAS = " + MDAS +
                 "\nnum2 = " + num2 +
+                "\nresult = " + result +
                 "\noperationDone = " + operationDone);
         }
         
