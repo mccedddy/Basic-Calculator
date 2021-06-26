@@ -50,7 +50,6 @@ namespace Basic_Calculator
 
                 // Set display.text as num2
                 num2 = display.Text;
-                //debug();
             }
 
             // If the decimal button is pressed
