@@ -33,8 +33,8 @@ namespace Basic_Calculator
             {
                 // If num2 is empty
                 if (num2 == "")
-                {   // If display.text is 0., do nothing
-                    if (display.Text == "0.") { }
+                {   // If display.text is 0., clear display.text
+                    if (display.Text == "0.") { display.Text = ""; }
                     // If display.text is not 0., clear display.text
                     else { display.Text = ""; }
                 }
