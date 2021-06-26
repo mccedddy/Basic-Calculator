@@ -77,7 +77,6 @@ namespace Basic_Calculator
                 {
                     zeroError = false;
                     display.Text = "0";
-                    //debug();
                 }
 
                 // If display.text is 0 or an operation has already been performed
@@ -87,16 +86,13 @@ namespace Basic_Calculator
                     if (num2 == "")
                     { display.Text = ""; }
                     operationDone = false;
-                    //debug();
                 }
 
                 // If MDAS is empty, input button.text
                 if (MDAS == "")
                 {
                     display.Text = display.Text + button.Text;
-                    //debug();
                 }
-                //debug();
             }
         }
         private void btn_MDAS(object sender, MouseEventArgs e)
@@ -115,7 +111,6 @@ namespace Basic_Calculator
                     // Set display.text as num1 and clear num2
                     num1 = display.Text;
                     num2 = "";
-                    //debug();
                 }
 
                 // If there's still no MDAS, set button.text as MDAS
@@ -125,7 +120,6 @@ namespace Basic_Calculator
 
                     // Set display.text as num1
                     num1 = display.Text;
-                    //debug();
                 }
 
                 // If there's already MDAS, clear MDAS and set button.text as MDAS
@@ -133,7 +127,6 @@ namespace Basic_Calculator
                 {
                     MDAS = "";
                     MDAS = MDAS + button.Text;
-                    //debug();
                 }
             }
 
@@ -178,7 +171,6 @@ namespace Basic_Calculator
                     zeroError = true;
                     display.Text = "Result is undefined";
                 }
-                //debug();
 
                 // Clear num2 and MDAS
                 num2 = "";
@@ -186,7 +178,6 @@ namespace Basic_Calculator
 
                 // Set operationDone as true
                 operationDone = true;
-                //debug();
             }
         }
         private void btn_negative_Click(object sender, EventArgs e)
@@ -204,14 +195,12 @@ namespace Basic_Calculator
                     if (display.Text != "0")
                     { display.Text = display.Text.Remove(0, 1); }
                 }
-                //debug();
             }
         }
         private void btn_C_Click(object sender, EventArgs e)
         {
             // Clear all
             clearall();
-            //debug();
         }
         private void btn_CE_Click(object sender, EventArgs e)
         {
@@ -222,12 +211,10 @@ namespace Basic_Calculator
             if (zeroError == true)
             {
                 clearall();
-                //debug();
             }
         }
 
         // Methods
-
         private void decimalpoint()
         {
             // If zeroError is false
@@ -249,7 +236,6 @@ namespace Basic_Calculator
                     display.Text = "0.";
                     operationDone = false;
                 }
-                //debug();
             }
         }
         private void zeroinput()
@@ -278,7 +264,6 @@ namespace Basic_Calculator
                 display.Text = "0";
                 operationDone = false;
             }
-            //debug();
         }
         private void operation()
         {
@@ -318,6 +303,5 @@ namespace Basic_Calculator
                 "\nresult = " + result +
                 "\noperationDone = " + operationDone);
         }
-        
     }
 }
