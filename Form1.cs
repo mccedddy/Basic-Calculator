@@ -16,7 +16,7 @@ namespace Basic_Calculator
         {
             InitializeComponent();
         }
-
+        // OOP Format
         // Fields
         string MDAS = "";
         string num1 = "";
