@@ -72,12 +72,7 @@ namespace Basic_Calculator
             else
             {
                 // If zeroError is true, reset zeroError and display.text
-                if (zeroError == true)
-                {
-                    zeroError = false;
-                    display.Text = "0";
-                    checkZeroError();
-                }
+                fixZeroError();
 
                 // If display.text is 0 or an operation has already been performed
                 if (display.Text == "0" | operationDone == true)
@@ -102,13 +97,13 @@ namespace Basic_Calculator
             // If num1, num2, and MDAS have value
             if (num1 != "" && num2 != "" && MDAS != "")
             {
-                    // Solve and show result
-                    operation();
-                    display.Text = Convert.ToString(result);
+                // Solve and show result
+                operation();
+                display.Text = Convert.ToString(result);
 
-                    // Set display.text as num1 and clear num2
-                    num1 = display.Text;
-                    num2 = "";
+                // Set display.text as num1 and clear num2
+                num1 = display.Text;
+                num2 = "";
             }
 
             // If there's still no MDAS, set button.text as MDAS
@@ -127,73 +122,41 @@ namespace Basic_Calculator
                 MDAS = MDAS + button.Text;
             }
 
-            // If display.text is infinite or NaN, show error and check zero error
-            if (display.Text == "∞" | display.Text == "-∞")
-            {
-                clearall();
-                zeroError = true;
-                display.Text = "Cannot divide by zero";
-            }
-            if (display.Text == "NaN")
-            {
-                clearall();
-                zeroError = true;
-                display.Text = "Result is undefined";
-            }
+            // Check if there is an error
             checkZeroError();
         }
         private void btn_Equals(object sender, EventArgs e)
         {
-            // If zeroError is false
-            if (zeroError == false)
-            {
-                // Set display.text as num2
-                num2 = display.Text;
+            // Set display.text as num2
+            num2 = display.Text;
 
-                // Perform operations according to MDAS
-                operation();
+            // Perform operations according to MDAS
+            operation();
 
-                // Show result
-                display.Text = Convert.ToString(result);
+            // Show result
+            display.Text = Convert.ToString(result);
 
-                // If display.text is infinite or NaN, show error and check zero error
-                if (display.Text == "∞" | display.Text == "-∞")
-                {
-                    clearall();
-                    zeroError = true;
-                    display.Text = "Cannot divide by zero";
-                }
-                if (display.Text == "NaN")
-                {
-                    clearall();
-                    zeroError = true;
-                    display.Text = "Result is undefined";
-                }
-                checkZeroError();
+            // Check if there is an error
+            checkZeroError();
 
-                // Clear num2 and MDAS
-                num2 = "";
-                MDAS = "";
+            // Clear num2 and MDAS
+            num2 = "";
+            MDAS = "";
 
-                // Set operationDone as true
-                operationDone = true;
-            }
+            // Set operationDone as true
+            operationDone = true;
         }
         private void btn_negative_Click(object sender, EventArgs e)
         {
-            // If zeroError is false
-            if (zeroError == false)
-            {
-                // If display.text is positive, add negative sign
-                if (!display.Text.Contains("-") && display.Text != "0")
-                { display.Text = display.Text.Insert(0, "-"); }
+            // If display.text is positive, add negative sign
+            if (!display.Text.Contains("-") && display.Text != "0")
+            { display.Text = display.Text.Insert(0, "-"); }
 
-                // If display.text is negative, remove negative sign
-                else
-                {
-                    if (display.Text != "0")
-                    { display.Text = display.Text.Remove(0, 1); }
-                }
+            // If display.text is negative, remove negative sign
+            else
+            {
+                if (display.Text != "0")
+                { display.Text = display.Text.Remove(0, 1); }
             }
         }
         private void btn_C_Click(object sender, EventArgs e)
@@ -218,43 +181,30 @@ namespace Basic_Calculator
         // Methods
         private void decimalpoint()
         {
-            // If zeroError is false
-            if (zeroError == false)
+            // If display.text does not have a decimal point, add a decimal point
+            if (!display.Text.Contains("."))
             {
-                // If display.text does not have a decimal point, add a decimal point
-                if (!display.Text.Contains("."))
-                {   
-                    display.Text = display.Text + ".";
+                display.Text = display.Text + ".";
 
-                    // If display.text is ".", set display.text as "0."
-                    if (display.Text == ".") 
-                    { display.Text = "0."; }
-                }
+                // If display.text is ".", set display.text as "0."
+                if (display.Text == ".")
+                { display.Text = "0."; }
+            }
 
-                // If an operation has been performed, set display.text as "0." and reset operationDone
-                if (operationDone == true)
-                {
-                    display.Text = "0.";
-                    operationDone = false;
-                }
+            // If an operation has been performed, set display.text as "0." and reset operationDone
+            if (operationDone == true)
+            {
+                display.Text = "0.";
+                operationDone = false;
             }
         }
         private void zeroinput()
         {
             // If zeroError is true
-            if (zeroError == true)
-            {
-                zeroError = false;
-                display.Text = "0";
-                checkZeroError();
-            }
-
-            // If display.text is 0, don't add 0
-            if (display.Text == "0")
-            { }
+            fixZeroError();
 
             // If display.text is not 0
-            else if (display.Text != "0")
+            if (display.Text != "0")
             {
                 // Add 0
                 display.Text = display.Text + "0";
@@ -300,6 +250,20 @@ namespace Basic_Calculator
         }
         private void checkZeroError()
         {
+            // If display.text is infinite or NaN, show error and check zero error
+            if (display.Text == "∞" | display.Text == "-∞")
+            {
+                clearall();
+                zeroError = true;
+                display.Text = "Cannot divide by zero";
+            }
+            if (display.Text == "NaN")
+            {
+                clearall();
+                zeroError = true;
+                display.Text = "Result is undefined";
+            }
+
             // if zero error is true, disable MDAS, negative and decimal buttons
             if (zeroError == true)
             {
@@ -320,13 +284,14 @@ namespace Basic_Calculator
                 btn_point.Enabled = true;
             }
         }
-        private void debug() // Use to show the current value of each variable
+        private void fixZeroError()
         {
-            MessageBox.Show("num1 = " + num1 +
-                "\nMDAS = " + MDAS +
-                "\nnum2 = " + num2 +
-                "\nresult = " + result +
-                "\noperationDone = " + operationDone);
+            if (zeroError == true)
+            {
+                zeroError = false;
+                display.Text = "0";
+                checkZeroError();
+            }
         }
     }
 }
