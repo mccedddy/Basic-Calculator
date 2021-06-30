@@ -17,6 +17,11 @@ namespace Basic_Calculator
             InitializeComponent();
         }
         // OOP Format
+        // Objects
+        input input = new input();
+        function function = new function();
+        zero zero = new zero();
+
         // Fields
         string MDAS = "";
         string num1 = "";
@@ -24,7 +29,8 @@ namespace Basic_Calculator
         double result;
         bool operationDone = false;
         bool zeroError = false;
-        private void btn_Click(object sender, EventArgs e)
+
+        public void btn_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
 
@@ -61,7 +67,7 @@ namespace Basic_Calculator
             // If the zero button is pressed
             else if (button.Text == "0")
             {
-                zeroinput();
+                zeroInput();
 
                 // If there is an MDAS, set display.text as num2
                 if (MDAS != "")
@@ -71,26 +77,10 @@ namespace Basic_Calculator
             // If a number button is pressed
             else
             {
-                // If zeroError is true, reset zeroError and display.text
-                fixZeroError();
-
-                // If display.text is 0 or an operation has already been performed
-                if (display.Text == "0" | operationDone == true)
-                {
-                    // If num2 is empty, clear display.text and reset operationDone
-                    if (num2 == "")
-                    { display.Text = ""; }
-                    operationDone = false;
-                }
-
-                // If MDAS is empty, input button.text
-                if (MDAS == "")
-                {
-                    display.Text = display.Text + button.Text;
-                }
+                numberInput(button.Text);
             }
         }
-        private void btn_MDAS(object sender, MouseEventArgs e)
+        public void btn_MDAS(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
             
@@ -125,7 +115,7 @@ namespace Basic_Calculator
             // Check if there is an error
             checkZeroError();
         }
-        private void btn_Equals(object sender, EventArgs e)
+        public void btn_Equals(object sender, EventArgs e)
         {
             // Set display.text as num2
             num2 = display.Text;
@@ -146,7 +136,7 @@ namespace Basic_Calculator
             // Set operationDone as true
             operationDone = true;
         }
-        private void btn_negative_Click(object sender, EventArgs e)
+        public void btn_negative_Click(object sender, EventArgs e)
         {
             // If display.text is positive, add negative sign
             if (!display.Text.Contains("-") && display.Text != "0")
@@ -159,13 +149,13 @@ namespace Basic_Calculator
                 { display.Text = display.Text.Remove(0, 1); }
             }
         }
-        private void btn_C_Click(object sender, EventArgs e)
+        public void btn_C_Click(object sender, EventArgs e)
         {
             // Clear all
             clearall();
             checkZeroError();
         }
-        private void btn_CE_Click(object sender, EventArgs e)
+        public void btn_CE_Click(object sender, EventArgs e)
         {
             // Clear display
             display.Text = "0";
@@ -198,7 +188,7 @@ namespace Basic_Calculator
                 operationDone = false;
             }
         }
-        private void zeroinput()
+        private void zeroInput()
         {
             // If zeroError is true
             fixZeroError();
@@ -215,6 +205,26 @@ namespace Basic_Calculator
             {
                 display.Text = "0";
                 operationDone = false;
+            }
+        }
+        private void numberInput(string buttontext)
+        {
+            // If zeroError is true, reset zeroError and display.text
+            fixZeroError();
+
+            // If display.text is 0 or an operation has already been performed
+            if (display.Text == "0" | operationDone == true)
+            {
+                // If num2 is empty, clear display.text and reset operationDone
+                if (num2 == "")
+                { display.Text = ""; }
+                operationDone = false;
+            }
+
+            // If MDAS is empty, input button.text
+            if (MDAS == "")
+            {
+                display.Text = display.Text + buttontext;
             }
         }
         private void operation()
