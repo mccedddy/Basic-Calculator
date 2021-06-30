@@ -9,8 +9,8 @@ namespace Basic_Calculator
     class input
     {
         // Objects
-        function function = new function();
-        zero zero = new zero();
+        function func = new function();
+        zero zer = new zero();
 
         // Fields
         public string MDAS = "";
@@ -32,16 +32,16 @@ namespace Basic_Calculator
             }
 
             // If an operation has been performed, set display.text as "0." and reset operationDone
-            if (function.operationDone == true)
+            if (func.operationDone == true)
             {
                 display.Text = "0.";
-                function.operationDone = false;
+                func.operationDone = false;
             }
         }
         public void zeroInput()
         {
             // If zeroError is true
-            zero.fixZeroError();
+            zer.fixZeroError();
 
             // If display.text is not 0
             if (display.Text != "0")
@@ -51,24 +51,24 @@ namespace Basic_Calculator
             }
 
             // If an operation has already been performed, set display.text as 0 and reset operationDone
-            if (function.operationDone == true)
+            if (func.operationDone == true)
             {
                 display.Text = "0";
-                function.operationDone = false;
+                func.operationDone = false;
             }
         }
         public void numberInput(string buttontext)
         {
             // If zeroError is true, reset zeroError and display.text
-            zero.fixZeroError();
+            zer.fixZeroError();
 
             // If display.text is 0 or an operation has already been performed
-            if (display.Text == "0" | function.operationDone == true)
+            if (display.Text == "0" | func.operationDone == true)
             {
                 // If num2 is empty, clear display.text and reset operationDone
                 if (num2 == "")
                 { display.Text = ""; }
-                function.operationDone = false;
+                func.operationDone = false;
             }
 
             // If MDAS is empty, input button.text

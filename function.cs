@@ -9,8 +9,8 @@ namespace Basic_Calculator
     class function
     {
         // Objects
-        input input = new input();
-        zero zero = new zero();
+        input inp = new input();
+        zero zer = new zero();
 
         // Fields
         public double result;
@@ -20,31 +20,31 @@ namespace Basic_Calculator
         public void operation()
         {
             // Solve according to MDAS
-            switch (input.MDAS)
+            switch (inp.MDAS)
             {
                 case "+":
-                    result = double.Parse(input.num1) + double.Parse(input.num2);
+                    result = double.Parse(inp.num1) + double.Parse(inp.num2);
                     break;
                 case "-":
-                    result = double.Parse(input.num1) - double.Parse(input.num2);
+                    result = double.Parse(inp.num1) - double.Parse(inp.num2);
                     break;
                 case "x":
-                    result = double.Parse(input.num1) * double.Parse(input.num2);
+                    result = double.Parse(inp.num1) * double.Parse(inp.num2);
                     break;
                 case "/":
-                    result = double.Parse(input.num1) / double.Parse(input.num2);
+                    result = double.Parse(inp.num1) / double.Parse(inp.num2);
                     break;
             }
         }
         public void clearall()
         {
             // Reset all variables
-            input.MDAS = "";
-            input.num1 = "";
-            input.num2 = "";
+            inp.MDAS = "";
+            inp.num1 = "";
+            inp.num2 = "";
             result = 0;
             display.Text = "0";
-            zero.zeroError = false;
+            zer.zeroError = false;
             operationDone = false;
             btn_add.Enabled = true;
             btn_subtract.Enabled = true;

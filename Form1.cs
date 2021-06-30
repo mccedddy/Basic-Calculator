@@ -18,9 +18,9 @@ namespace Basic_Calculator
         }
         // OOP Format
         // Objects
-        input input = new input();
-        function function = new function();
-        zero zero = new zero();
+        input inp = new input();
+        function func = new function();
+        zero zer = new zero();
 
         // Fields
         string MDAS = "";

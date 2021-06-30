@@ -9,25 +9,25 @@ namespace Basic_Calculator
     class zero
     {
         // Objects
-        input input = new input();
-        function function = new function();
+        input inp = new input();
+        function func = new function();
 
         // Fields
         public bool zeroError = false;
 
         // Methods
-        public void checkZeroError(string displayText)
+        public void checkZeroError()
         {
             // If display.text is infinite or NaN, show error and check zero error
             if (display.Text == "∞" | display.Text == "-∞")
             {
-                function.clearall();
+                func.clearall();
                 zeroError = true;
                 display.Text = "Cannot divide by zero";
             }
             if (display.Text == "NaN")
             {
-                function.clearall();
+                func.clearall();
                 zeroError = true;
                 display.Text = "Result is undefined";
             }
@@ -58,7 +58,7 @@ namespace Basic_Calculator
             {
                 zeroError = false;
                 display.Text = "0";
-                checkZeroError(); // no parameter
+                checkZeroError();
             }
         }
     }
