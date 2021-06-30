@@ -101,7 +101,7 @@ namespace Basic_Calculator
             
             // If num1, num2, and MDAS have value
             if (num1 != "" && num2 != "" && MDAS != "")
-                {
+            {
                     // Solve and show result
                     operation();
                     display.Text = Convert.ToString(result);
