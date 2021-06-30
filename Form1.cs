@@ -76,6 +76,7 @@ namespace Basic_Calculator
                 {
                     zeroError = false;
                     display.Text = "0";
+                    checkZeroError();
                 }
 
                 // If display.text is 0 or an operation has already been performed
@@ -97,11 +98,9 @@ namespace Basic_Calculator
         private void btn_MDAS(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
-            // If zeroError is false
-            if (zeroError == false)
-            {
-                // If num1, num2, and MDAS have value
-                if (num1 != "" && num2 != "" && MDAS != "")
+            
+            // If num1, num2, and MDAS have value
+            if (num1 != "" && num2 != "" && MDAS != "")
                 {
                     // Solve and show result
                     operation();
@@ -110,26 +109,25 @@ namespace Basic_Calculator
                     // Set display.text as num1 and clear num2
                     num1 = display.Text;
                     num2 = "";
-                }
-
-                // If there's still no MDAS, set button.text as MDAS
-                if (MDAS == "")
-                {
-                    MDAS = MDAS + button.Text;
-
-                    // Set display.text as num1
-                    num1 = display.Text;
-                }
-
-                // If there's already MDAS, clear MDAS and set button.text as MDAS
-                else if (MDAS != "")
-                {
-                    MDAS = "";
-                    MDAS = MDAS + button.Text;
-                }
             }
 
-            // If display.text is infinite or NaN, show error
+            // If there's still no MDAS, set button.text as MDAS
+            if (MDAS == "")
+            {
+                MDAS = MDAS + button.Text;
+
+                // Set display.text as num1
+                num1 = display.Text;
+            }
+
+            // If there's already MDAS, clear MDAS and set button.text as MDAS
+            else if (MDAS != "")
+            {
+                MDAS = "";
+                MDAS = MDAS + button.Text;
+            }
+
+            // If display.text is infinite or NaN, show error and check zero error
             if (display.Text == "∞" | display.Text == "-∞")
             {
                 clearall();
@@ -142,6 +140,7 @@ namespace Basic_Calculator
                 zeroError = true;
                 display.Text = "Result is undefined";
             }
+            checkZeroError();
         }
         private void btn_Equals(object sender, EventArgs e)
         {
@@ -157,7 +156,7 @@ namespace Basic_Calculator
                 // Show result
                 display.Text = Convert.ToString(result);
 
-                // If display.text is infinite or NaN, show error
+                // If display.text is infinite or NaN, show error and check zero error
                 if (display.Text == "∞" | display.Text == "-∞")
                 {
                     clearall();
@@ -170,6 +169,7 @@ namespace Basic_Calculator
                     zeroError = true;
                     display.Text = "Result is undefined";
                 }
+                checkZeroError();
 
                 // Clear num2 and MDAS
                 num2 = "";
@@ -200,6 +200,7 @@ namespace Basic_Calculator
         {
             // Clear all
             clearall();
+            checkZeroError();
         }
         private void btn_CE_Click(object sender, EventArgs e)
         {
@@ -210,6 +211,7 @@ namespace Basic_Calculator
             if (zeroError == true)
             {
                 clearall();
+                checkZeroError();
             }
         }
 
@@ -244,6 +246,7 @@ namespace Basic_Calculator
             {
                 zeroError = false;
                 display.Text = "0";
+                checkZeroError();
             }
 
             // If display.text is 0, don't add 0
@@ -293,6 +296,29 @@ namespace Basic_Calculator
             display.Text = "0";
             zeroError = false;
             operationDone = false;
+            checkZeroError();
+        }
+        private void checkZeroError()
+        {
+            // if zero error is true, disable MDAS, negative and decimal buttons
+            if (zeroError == true)
+            {
+                btn_add.Enabled = false;
+                btn_subtract.Enabled = false;
+                btn_multiply.Enabled = false;
+                btn_divide.Enabled = false;
+                btn_negative.Enabled = false;
+                btn_point.Enabled = false;
+            }
+            else
+            {
+                btn_add.Enabled = true;
+                btn_subtract.Enabled = true;
+                btn_multiply.Enabled = true;
+                btn_divide.Enabled = true;
+                btn_negative.Enabled = true;
+                btn_point.Enabled = true;
+            }
         }
         private void debug() // Use to show the current value of each variable
         {
