@@ -77,7 +77,7 @@ namespace Basic_Calculator
             if (calc.num1 != "" && calc.num2 != "" && calc.MDAS != "")
             {
                 // Solve and show result
-                operation();
+                calc.operation();
                 display.Text = Convert.ToString(calc.result);
 
                 // Set display.text as num1 and clear num2
@@ -111,7 +111,7 @@ namespace Basic_Calculator
             calc.num2 = display.Text;
 
             // Perform operations according to MDAS
-            operation();
+            calc.operation();
 
             // Show result
             display.Text = Convert.ToString(calc.result);
@@ -220,25 +220,7 @@ namespace Basic_Calculator
                 display.Text = display.Text + buttontext;
             }
         }
-        private void operation()
-        {
-            // Solve according to MDAS
-            switch (calc.MDAS)
-            {
-                case "+":
-                    calc.result = double.Parse(calc.num1) + double.Parse(calc.num2);
-                    break;
-                case "-":
-                    calc.result = double.Parse(calc.num1) - double.Parse(calc.num2);
-                    break;
-                case "x":
-                    calc.result = double.Parse(calc.num1) * double.Parse(calc.num2);
-                    break;
-                case "/":
-                    calc.result = double.Parse(calc.num1) / double.Parse(calc.num2);
-                    break;
-            }
-        }
+       
         private void clearall()
         {
             // Reset all variables
