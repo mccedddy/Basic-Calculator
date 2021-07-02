@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Basic_Calculator
 {
-    class calcClass : Basic_Calculator
+    class calcClass 
     {
         // Fields
         public string MDAS = "";
