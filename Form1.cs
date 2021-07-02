@@ -17,10 +17,6 @@ namespace Basic_Calculator
             InitializeComponent();
         }
         // OOP Format
-        // Objects
-        input inp = new input();
-        function func = new function();
-        zero zer = new zero();
 
         // Fields
         string MDAS = "";

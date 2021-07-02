@@ -34,3 +34,4 @@ C:\Users\cedri\Source\Repos\Basic-Calculator\obj\Debug\net5.0-windows\Basic Calc
 C:\Users\cedri\Source\Repos\Basic-Calculator\obj\Debug\net5.0-windows\ref\Basic Calculator.dll
 C:\Users\cedri\Source\Repos\Basic-Calculator\obj\Debug\net5.0-windows\Basic Calculator.pdb
 C:\Users\cedri\Source\Repos\Basic-Calculator\obj\Debug\net5.0-windows\Basic Calculator.genruntimeconfig.cache
+C:\Users\cedri\source\repos\Basic-Calculator\obj\Debug\net5.0-windows\Basic_Calculator.calc.resources
