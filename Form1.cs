@@ -17,6 +17,7 @@ namespace Basic_Calculator
             InitializeComponent();
         }
         // OOP Format
+        calcClass calc = new calcClass();
 
         // Fields
         string MDAS = "";
