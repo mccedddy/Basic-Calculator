@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Basic_Calculator
 {
     class calcClass 
     {
+        // Objects
+        FormClassConnector f1 = new FormClassConnector();
+        
         // Fields
         public string MDAS = "";
         public string num1 = "";

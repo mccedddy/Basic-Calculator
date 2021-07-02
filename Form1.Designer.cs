@@ -346,8 +346,8 @@ namespace Basic_Calculator
         private System.Windows.Forms.Button btn_point;
         private System.Windows.Forms.Button btn_equals;
         private System.Windows.Forms.Button btn_0;
-        private System.Windows.Forms.TextBox display;
         private System.Windows.Forms.Button btn_negative;
+        internal System.Windows.Forms.TextBox display;
     }
 }
 

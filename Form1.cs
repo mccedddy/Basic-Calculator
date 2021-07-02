@@ -162,6 +162,7 @@ namespace Basic_Calculator
         }
 
         // Methods
+        
         private void decimalpoint()
         {
             // If display.text does not have a decimal point, add a decimal point
