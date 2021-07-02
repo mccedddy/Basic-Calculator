@@ -103,6 +103,7 @@ namespace Basic_Calculator
 
             // Check if there is an error
             checkZeroError();
+            buttonEnabled();
         }
         public void btn_Equals(object sender, EventArgs e)
         {
@@ -117,6 +118,7 @@ namespace Basic_Calculator
 
             // Check if there is an error
             checkZeroError();
+            buttonEnabled();
 
             // Clear num2 and MDAS
             calc.num2 = "";
@@ -143,6 +145,7 @@ namespace Basic_Calculator
             // Clear all
             clearall();
             checkZeroError();
+            buttonEnabled();
         }
         public void btn_CE_Click(object sender, EventArgs e)
         {
@@ -154,6 +157,7 @@ namespace Basic_Calculator
             {
                 clearall();
                 checkZeroError();
+                buttonEnabled();
             }
         }
 
@@ -246,6 +250,7 @@ namespace Basic_Calculator
             calc.zeroError = false;
             calc.operationDone = false;
             checkZeroError();
+            buttonEnabled();
         }
         private void checkZeroError()
         {
@@ -262,7 +267,19 @@ namespace Basic_Calculator
                 calc.zeroError = true;
                 display.Text = "Result is undefined";
             }
-
+        }
+        private void fixZeroError()
+        {
+            if (calc.zeroError == true)
+            {
+                calc.zeroError = false;
+                display.Text = "0";
+                checkZeroError();
+                buttonEnabled();
+            }
+        }
+        private void buttonEnabled()
+        {
             // if zero error is true, disable MDAS, negative and decimal buttons
             if (calc.zeroError == true)
             {
@@ -281,15 +298,6 @@ namespace Basic_Calculator
                 btn_divide.Enabled = true;
                 btn_negative.Enabled = true;
                 btn_point.Enabled = true;
-            }
-        }
-        private void fixZeroError()
-        {
-            if (calc.zeroError == true)
-            {
-                calc.zeroError = false;
-                display.Text = "0";
-                checkZeroError();
             }
         }
     }
