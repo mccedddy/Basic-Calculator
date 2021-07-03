@@ -86,6 +86,16 @@ namespace Basic_Calculator
                 display.Text = display.Text + buttontext;
             }
         }
+        public void clearall()
+        {
+            // Reset everything
+            MDAS = "";
+            num1 = "";
+            num2 = "";
+            result = 0;
+            zeroError = false;
+            operationDone = false;
+        }
         public void checkZeroError(TextBox display)
         {
             // If display.text is infinite or NaN, show error
@@ -100,16 +110,6 @@ namespace Basic_Calculator
                 display.Text = "Result is undefined";
             }
         }
-        public void clearall()
-        {
-            // Reset everything
-            MDAS = "";
-            num1 = "";
-            num2 = "";
-            result = 0;
-            zeroError = false;
-            operationDone = false;
-        }
         public void fixZeroError(TextBox display)
         {
             // If zero error is true, clear all
@@ -117,6 +117,28 @@ namespace Basic_Calculator
             {
                 display.Text = "0";
                 clearall();
+            }
+        }
+        public void buttonEnabled(Button btn_add, Button btn_subtract, Button btn_multiply, Button btn_divide, Button btn_negative, Button btn_point)
+        {
+            // if zero error is true, disable MDAS, negative and decimal buttons
+            if (zeroError == true)
+            {
+                btn_add.Enabled = false;
+                btn_subtract.Enabled = false;
+                btn_multiply.Enabled = false;
+                btn_divide.Enabled = false;
+                btn_negative.Enabled = false;
+                btn_point.Enabled = false;
+            }
+            else
+            {
+                btn_add.Enabled = true;
+                btn_subtract.Enabled = true;
+                btn_multiply.Enabled = true;
+                btn_divide.Enabled = true;
+                btn_negative.Enabled = true;
+                btn_point.Enabled = true;
             }
         }
     }

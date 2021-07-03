@@ -18,6 +18,7 @@ namespace Basic_Calculator
         {
             InitializeComponent();
         }
+
         // OOP Format
         public void btn_Click(object sender, EventArgs e)
         {
@@ -52,7 +53,7 @@ namespace Basic_Calculator
             else if (button.Text == "0")
             {
                 calc.fixZeroError(display);
-                buttonEnabled();
+                calc.buttonEnabled(btn_add, btn_subtract, btn_multiply, btn_divide, btn_negative, btn_point);
                 calc.zeroInput(display);
                 // If there is an MDAS, set display.text as num2
                 if (calc.MDAS != "")
@@ -63,7 +64,7 @@ namespace Basic_Calculator
             else
             {
                 calc.fixZeroError(display);
-                buttonEnabled();
+                calc.buttonEnabled(btn_add, btn_subtract, btn_multiply, btn_divide, btn_negative, btn_point);
                 calc.numberInput(display, button.Text);
             }
         }
@@ -96,7 +97,7 @@ namespace Basic_Calculator
 
             // Check if there is an error
             calc.checkZeroError(display);
-            buttonEnabled();
+            calc.buttonEnabled(btn_add, btn_subtract, btn_multiply, btn_divide, btn_negative, btn_point);
         }
         public void btn_Equals(object sender, EventArgs e)
         {
@@ -109,7 +110,7 @@ namespace Basic_Calculator
 
             // Check if there is an error
             calc.checkZeroError(display);
-            buttonEnabled();
+            calc.buttonEnabled(btn_add, btn_subtract, btn_multiply, btn_divide, btn_negative, btn_point);
 
             // Clear num2 and MDAS
             calc.num2 = "";
@@ -132,7 +133,7 @@ namespace Basic_Calculator
             // Clear all
             display.Text = "0";
             calc.clearall();
-            buttonEnabled();
+            calc.buttonEnabled(btn_add, btn_subtract, btn_multiply, btn_divide, btn_negative, btn_point);
         }
         public void btn_CE_Click(object sender, EventArgs e)
         {
@@ -141,31 +142,7 @@ namespace Basic_Calculator
             if (calc.zeroError == true)
             {
                 calc.clearall();
-                buttonEnabled();
-            }
-        }
-
-        // Methods
-        private void buttonEnabled()
-        {
-            // if zero error is true, disable MDAS, negative and decimal buttons
-            if (calc.zeroError == true)
-            {
-                btn_add.Enabled = false;
-                btn_subtract.Enabled = false;
-                btn_multiply.Enabled = false;
-                btn_divide.Enabled = false;
-                btn_negative.Enabled = false;
-                btn_point.Enabled = false;
-            }
-            else
-            {
-                btn_add.Enabled = true;
-                btn_subtract.Enabled = true;
-                btn_multiply.Enabled = true;
-                btn_divide.Enabled = true;
-                btn_negative.Enabled = true;
-                btn_point.Enabled = true;
+                calc.buttonEnabled(btn_add, btn_subtract, btn_multiply, btn_divide, btn_negative, btn_point);
             }
         }
     }
