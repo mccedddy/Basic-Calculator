@@ -9,9 +9,6 @@ namespace Basic_Calculator
 {
     class calcClass 
     {
-        // Objects
-        FormClassConnector f1 = new FormClassConnector();
-        
         // Fields
         public string MDAS = "";
         public string num1 = "";

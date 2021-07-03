@@ -12,58 +12,52 @@ namespace Basic_Calculator
 {
     public partial class Basic_Calculator : Form
     {
+        calcClass calc = new calcClass();
+
         public Basic_Calculator()
         {
             InitializeComponent();
         }
         // OOP Format
-        calcClass calc = new calcClass();
-
         public void btn_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
 
-            // If num1 and MDAS have value
+            // For inputting num2
             if (calc.num1 != "" && calc.MDAS != "")
             {
-                // If num2 is empty
+                // if there is num1 and MDAS, clear display.text
                 if (calc.num2 == "")
-                {   // If display.text is 0., clear display.text
+                {
                     if (display.Text == "0.") { display.Text = ""; }
-                    // If display.text is not 0., clear display.text
                     else { display.Text = ""; }
                 }
 
-                // If button.text is not 0
+                // If button.text is not 0, add the number to display
                 if (button.Text != "0")
-                {
-                    // If button.text is ".", do nothing
+                {   // If button.text is ".", do nothing
                     if (button.Text == ".") { }
-                    // If button.text is not ".", add button.text
                     else { display.Text = display.Text + button.Text; }
                 }
-
-                // Set display.text as num2
                 calc.num2 = display.Text;
             }
 
-            // If the decimal button is pressed
+            // For decimal input
             if (button.Text == ".")
             {
                 decimalpoint();
             }
 
-            // If the zero button is pressed
+            // For zero input
             else if (button.Text == "0")
             {
                 zeroInput();
-
                 // If there is an MDAS, set display.text as num2
                 if (calc.MDAS != "")
                 { calc.num2 = display.Text; }
             }
 
-            // If a number button is pressed
+            // For number input
             else
             {
                 numberInput(button.Text);
@@ -73,28 +67,23 @@ namespace Basic_Calculator
         {
             Button button = (Button)sender;
             
-            // If num1, num2, and MDAS have value
+            // For continuous operation
             if (calc.num1 != "" && calc.num2 != "" && calc.MDAS != "")
             {
-                // Solve and show result
                 calc.operation();
                 display.Text = Convert.ToString(calc.result);
-
-                // Set display.text as num1 and clear num2
                 calc.num1 = display.Text;
                 calc.num2 = "";
             }
 
-            // If there's still no MDAS, set button.text as MDAS
+            // Input MDAS and set display.text as num1
             if (calc.MDAS == "")
             {
                 calc.MDAS = calc.MDAS + button.Text;
-
-                // Set display.text as num1
                 calc.num1 = display.Text;
             }
 
-            // If there's already MDAS, clear MDAS and set button.text as MDAS
+            // To change MDAS
             else if (calc.MDAS != "")
             {
                 calc.MDAS = "";
@@ -110,10 +99,8 @@ namespace Basic_Calculator
             // Set display.text as num2
             calc.num2 = display.Text;
 
-            // Perform operations according to MDAS
+            // Perform operations
             calc.operation();
-
-            // Show result
             display.Text = Convert.ToString(calc.result);
 
             // Check if there is an error
@@ -123,17 +110,13 @@ namespace Basic_Calculator
             // Clear num2 and MDAS
             calc.num2 = "";
             calc.MDAS = "";
-
-            // Set operationDone as true
             calc.operationDone = true;
         }
         public void btn_negative_Click(object sender, EventArgs e)
         {
-            // If display.text is positive, add negative sign
+            // Add or remove negative sign
             if (!display.Text.Contains("-") && display.Text != "0")
             { display.Text = display.Text.Insert(0, "-"); }
-
-            // If display.text is negative, remove negative sign
             else
             {
                 if (display.Text != "0")
@@ -151,8 +134,6 @@ namespace Basic_Calculator
         {
             // Clear display
             display.Text = "0";
-
-            // If zeroError is true, clear all
             if (calc.zeroError == true)
             {
                 clearall();
@@ -165,12 +146,10 @@ namespace Basic_Calculator
         
         private void decimalpoint()
         {
-            // If display.text does not have a decimal point, add a decimal point
+            // Add decimal point
             if (!display.Text.Contains("."))
             {
                 display.Text = display.Text + ".";
-
-                // If display.text is ".", set display.text as "0."
                 if (display.Text == ".")
                 { display.Text = "0."; }
             }
@@ -184,17 +163,14 @@ namespace Basic_Calculator
         }
         private void zeroInput()
         {
-            // If zeroError is true
             fixZeroError();
-
-            // If display.text is not 0
+            // Add 0
             if (display.Text != "0")
             {
-                // Add 0
                 display.Text = display.Text + "0";
             }
 
-            // If an operation has already been performed, set display.text as 0 and reset operationDone
+            // If an operation has already been performed, reset display.text and operationDone
             if (calc.operationDone == true)
             {
                 display.Text = "0";
@@ -203,10 +179,9 @@ namespace Basic_Calculator
         }
         private void numberInput(string buttontext)
         {
-            // If zeroError is true, reset zeroError and display.text
             fixZeroError();
 
-            // If display.text is 0 or an operation has already been performed
+            // Clear display.text
             if (display.Text == "0" | calc.operationDone == true)
             {
                 // If num2 is empty, clear display.text and reset operationDone
@@ -215,7 +190,7 @@ namespace Basic_Calculator
                 calc.operationDone = false;
             }
 
-            // If MDAS is empty, input button.text
+            // Input number
             if (calc.MDAS == "")
             {
                 display.Text = display.Text + buttontext;
@@ -224,7 +199,7 @@ namespace Basic_Calculator
        
         private void clearall()
         {
-            // Reset all variables
+            // Reset everything
             calc.MDAS = "";
             calc.num1 = "";
             calc.num2 = "";
@@ -232,12 +207,16 @@ namespace Basic_Calculator
             display.Text = "0";
             calc.zeroError = false;
             calc.operationDone = false;
-            checkZeroError();
-            buttonEnabled();
+            btn_add.Enabled = true;
+            btn_subtract.Enabled = true;
+            btn_multiply.Enabled = true;
+            btn_divide.Enabled = true;
+            btn_negative.Enabled = true;
+            btn_point.Enabled = true;
         }
         private void checkZeroError()
         {
-            // If display.text is infinite or NaN, show error and check zero error
+            // If display.text is infinite or NaN, show error
             if (display.Text == "∞" | display.Text == "-∞")
             {
                 clearall();
@@ -253,12 +232,10 @@ namespace Basic_Calculator
         }
         private void fixZeroError()
         {
+            // If zero error is true, clear all
             if (calc.zeroError == true)
             {
-                calc.zeroError = false;
-                display.Text = "0";
-                checkZeroError();
-                buttonEnabled();
+                clearall();
             }
         }
         private void buttonEnabled()
