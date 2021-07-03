@@ -93,7 +93,7 @@ namespace Basic_Calculator
             }
 
             // Check if there is an error
-            checkZeroError();
+            calc.checkZeroError(display);
             buttonEnabled();
         }
         public void btn_Equals(object sender, EventArgs e)
@@ -106,7 +106,7 @@ namespace Basic_Calculator
             display.Text = Convert.ToString(calc.result);
 
             // Check if there is an error
-            checkZeroError();
+            calc.checkZeroError(display);
             buttonEnabled();
 
             // Clear num2 and MDAS
@@ -129,7 +129,7 @@ namespace Basic_Calculator
         {
             // Clear all
             clearall();
-            checkZeroError();
+            calc.checkZeroError(display);
             buttonEnabled();
         }
         public void btn_CE_Click(object sender, EventArgs e)
@@ -139,7 +139,7 @@ namespace Basic_Calculator
             if (calc.zeroError == true)
             {
                 clearall();
-                checkZeroError();
+                calc.checkZeroError(display);
                 buttonEnabled();
             }
         }
@@ -162,22 +162,7 @@ namespace Basic_Calculator
             btn_negative.Enabled = true;
             btn_point.Enabled = true;
         }
-        private void checkZeroError()
-        {
-            // If display.text is infinite or NaN, show error
-            if (display.Text == "∞" | display.Text == "-∞")
-            {
-                clearall();
-                calc.zeroError = true;
-                display.Text = "Cannot divide by zero";
-            }
-            if (display.Text == "NaN")
-            {
-                clearall();
-                calc.zeroError = true;
-                display.Text = "Result is undefined";
-            }
-        }
+        
         private void fixZeroError()
         {
             // If zero error is true, clear all

@@ -86,5 +86,19 @@ namespace Basic_Calculator
                 display.Text = display.Text + buttontext;
             }
         }
+        public void checkZeroError(TextBox display)
+        {
+            // If display.text is infinite or NaN, show error
+            if (display.Text == "∞" | display.Text == "-∞")
+            {
+                zeroError = true;
+                display.Text = "Cannot divide by zero";
+            }
+            if (display.Text == "NaN")
+            {
+                zeroError = true;
+                display.Text = "Result is undefined";
+            }
+        }
     }
 }
