@@ -37,5 +37,54 @@ namespace Basic_Calculator
                     break;
             }
         }
+        public void decimalpoint(TextBox display)
+        {
+            // Add decimal point
+            if (!display.Text.Contains("."))
+            {
+                display.Text = display.Text + ".";
+                if (display.Text == ".")
+                { display.Text = "0."; }
+            }
+
+            // If an operation has been performed, set display.text as "0." and reset operationDone
+            if (operationDone == true)
+            {
+                display.Text = "0.";
+                operationDone = false;
+            }
+        }
+        public void zeroInput(TextBox display)
+        {
+            // Add 0
+            if (display.Text != "0")
+            {
+                display.Text = display.Text + "0";
+            }
+
+            // If an operation has already been performed, reset display.text and operationDone
+            if (operationDone == true)
+            {
+                display.Text = "0";
+                operationDone = false;
+            }
+        }
+        public void numberInput(TextBox display, string buttontext)
+        {
+            // Clear display.text
+            if (display.Text == "0" | operationDone == true)
+            {
+                // If num2 is empty, clear display.text and reset operationDone
+                if (num2 == "")
+                { display.Text = ""; }
+                operationDone = false;
+            }
+
+            // Input number
+            if (MDAS == "")
+            {
+                display.Text = display.Text + buttontext;
+            }
+        }
     }
 }

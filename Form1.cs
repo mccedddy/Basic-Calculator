@@ -45,13 +45,14 @@ namespace Basic_Calculator
             // For decimal input
             if (button.Text == ".")
             {
-                decimalpoint();
+                calc.decimalpoint(display);
             }
 
             // For zero input
             else if (button.Text == "0")
             {
-                zeroInput();
+                fixZeroError();
+                calc.zeroInput(display);
                 // If there is an MDAS, set display.text as num2
                 if (calc.MDAS != "")
                 { calc.num2 = display.Text; }
@@ -60,7 +61,8 @@ namespace Basic_Calculator
             // For number input
             else
             {
-                numberInput(button.Text);
+                fixZeroError();
+                calc.numberInput(display, button.Text);
             }
         }
         public void btn_MDAS(object sender, MouseEventArgs e)
@@ -143,60 +145,6 @@ namespace Basic_Calculator
         }
 
         // Methods
-        
-        private void decimalpoint()
-        {
-            // Add decimal point
-            if (!display.Text.Contains("."))
-            {
-                display.Text = display.Text + ".";
-                if (display.Text == ".")
-                { display.Text = "0."; }
-            }
-
-            // If an operation has been performed, set display.text as "0." and reset operationDone
-            if (calc.operationDone == true)
-            {
-                display.Text = "0.";
-                calc.operationDone = false;
-            }
-        }
-        private void zeroInput()
-        {
-            fixZeroError();
-            // Add 0
-            if (display.Text != "0")
-            {
-                display.Text = display.Text + "0";
-            }
-
-            // If an operation has already been performed, reset display.text and operationDone
-            if (calc.operationDone == true)
-            {
-                display.Text = "0";
-                calc.operationDone = false;
-            }
-        }
-        private void numberInput(string buttontext)
-        {
-            fixZeroError();
-
-            // Clear display.text
-            if (display.Text == "0" | calc.operationDone == true)
-            {
-                // If num2 is empty, clear display.text and reset operationDone
-                if (calc.num2 == "")
-                { display.Text = ""; }
-                calc.operationDone = false;
-            }
-
-            // Input number
-            if (calc.MDAS == "")
-            {
-                display.Text = display.Text + buttontext;
-            }
-        }
-       
         private void clearall()
         {
             // Reset everything
