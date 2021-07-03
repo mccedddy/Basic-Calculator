@@ -100,5 +100,24 @@ namespace Basic_Calculator
                 display.Text = "Result is undefined";
             }
         }
+        public void clearall()
+        {
+            // Reset everything
+            MDAS = "";
+            num1 = "";
+            num2 = "";
+            result = 0;
+            zeroError = false;
+            operationDone = false;
+        }
+        public void fixZeroError(TextBox display)
+        {
+            // If zero error is true, clear all
+            if (zeroError == true)
+            {
+                display.Text = "0";
+                clearall();
+            }
+        }
     }
 }

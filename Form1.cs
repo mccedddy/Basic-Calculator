@@ -51,7 +51,8 @@ namespace Basic_Calculator
             // For zero input
             else if (button.Text == "0")
             {
-                fixZeroError();
+                calc.fixZeroError(display);
+                buttonEnabled();
                 calc.zeroInput(display);
                 // If there is an MDAS, set display.text as num2
                 if (calc.MDAS != "")
@@ -61,7 +62,8 @@ namespace Basic_Calculator
             // For number input
             else
             {
-                fixZeroError();
+                calc.fixZeroError(display);
+                buttonEnabled();
                 calc.numberInput(display, button.Text);
             }
         }
@@ -128,8 +130,8 @@ namespace Basic_Calculator
         public void btn_C_Click(object sender, EventArgs e)
         {
             // Clear all
-            clearall();
-            calc.checkZeroError(display);
+            display.Text = "0";
+            calc.clearall();
             buttonEnabled();
         }
         public void btn_CE_Click(object sender, EventArgs e)
@@ -138,39 +140,12 @@ namespace Basic_Calculator
             display.Text = "0";
             if (calc.zeroError == true)
             {
-                clearall();
-                calc.checkZeroError(display);
+                calc.clearall();
                 buttonEnabled();
             }
         }
 
         // Methods
-        private void clearall()
-        {
-            // Reset everything
-            calc.MDAS = "";
-            calc.num1 = "";
-            calc.num2 = "";
-            calc.result = 0;
-            display.Text = "0";
-            calc.zeroError = false;
-            calc.operationDone = false;
-            btn_add.Enabled = true;
-            btn_subtract.Enabled = true;
-            btn_multiply.Enabled = true;
-            btn_divide.Enabled = true;
-            btn_negative.Enabled = true;
-            btn_point.Enabled = true;
-        }
-        
-        private void fixZeroError()
-        {
-            // If zero error is true, clear all
-            if (calc.zeroError == true)
-            {
-                clearall();
-            }
-        }
         private void buttonEnabled()
         {
             // if zero error is true, disable MDAS, negative and decimal buttons
